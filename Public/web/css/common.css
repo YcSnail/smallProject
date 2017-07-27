@@ -1,0 +1,88 @@
+﻿/* CSS Document */
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td { margin: 0; padding: 0; font-size: 12px; font-family: Arial, "宋体" ,tahoma,arial,\5b8b\4f53,sans-serif; color: #555; }
+table { border-collapse: collapse; }
+a img { border: 0px; }
+address, caption, cite, code, dfn, em, th, var { font-style: normal; font-weight: normal; }
+li { list-style: none; }
+caption, th { text-align: left; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+input, button, textarea, select { font-family: inherit; }
+a { font-family: Arial, "宋体" ,tahoma,arial,\5b8b\4f53,sans-serif; outline: none; text-decoration: none; color: #4C4C4C; }
+a:hover { }
+html { overflow-y: scroll; }
+body { background: White; text-align: center; width: 100%; height: 100%; margin: 0 auto; padding: 0; overflow-x: hidden; }
+
+
+.clear { clear: both; }
+.clearfix:after { content: '\20'; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block;}
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+/****=resetend***/
+
+
+#wrap { text-align: left; width: 960px; margin: 0 auto; overflow: hidden; padding-top: 20px; padding-bottom: 25px; }
+
+
+.head { width: 960px; }
+.logo { float: left; width: 438px; height: 90px; }
+.top_right{ float:right; width:520px}
+.head_top {text-align: right;  }
+.head_top ul { display: inline-block; text-align: right;  }
+.head_top ul li { float: left; padding-left: 10px; line-height: 20px; height: 20px; }
+.head_top ul li a { }
+.head_bottom {}
+
+.speedlook { float: left; width: 90px; padding-left: 10px; padding-top: 0px; }
+.speedlook br{ padding-top:5px}
+.head_tel {   }
+.ab{float:left}
+.head_tel strong { font-size: 26px; color: #FE7903;line-height: 52px; height: 52px; }
+
+
+/*导航栏*/
+.NavMenu { width: 960px; display: inline-block; padding-top: 5px; position:relative; z-index:900}
+.nav { width: 960px; background: url(../images/common/nav_bg.jpg) no-repeat; height: 30px; }
+.nav li { position: relative; float: left; text-align: center; line-height: 28px; height: 28px; padding: 0px 0px 0px 22px; z-index:111111}
+
+.nav li a { font-size: 12px; color: White; padding: 0px 6px 0px 6px; text-align: center; display: block; font-weight: bold; border:solid 1px #F8931D; }
+.nav li a:hover{ font-size: 12px; color: White; background: url(../images/common/nav_btn_hover.jpg) repeat-x; padding: 0px 6px 0px 6px; text-align: center; display: block; border: solid 1px #E98D20; }
+.nav_current a { font-size: 12px; color: White; background: url(../images/common/nav_btn_hover.jpg) repeat-x; padding: 0px 6px 0px 6px; text-align: center; display: block; border: solid 1px #E98D20; }
+.nav li .nav_current { background: url(../images/common/nav_btn_hover.jpg) repeat-x; border: solid 1px #E98D20;padding: 0px 6px 0px 6px;}
+.nav li .nav-lv2 {}
+.nav li dl { position: absolute; padding-top: 10px; padding-bottom: 10px; display: none; background: white; border: solid 1px #CC934F; border-top: 0; z-index: 111111; top: 30px;filter: alpha(opacity=80); -moz-opacity: 0.8; opacity: 0.8;}
+.nav li dl dd { line-height: 22px; font-size: 12px; font-weight: normal; padding-left: 10px; }
+.nav li dl dd a { background: none; color: #2B2B2B; line-height: 22px; height: 22px; display: block; font-weight: normal; width: 142px; text-align: left; overflow: hidden; border:0; }
+.nav li dl dd a:hover { background: none; color: #FB6911; line-height: 22px; height: 22px; display: block; width: 142px; text-align: left; overflow: hidden; border:0; }
+.nav li.nav_cur a { }
+/*end*/
+
+/*页脚*/
+.main_foot { padding-top:15px;}
+.foot { text-align: left; margin: 0 auto; height: auto; display: inline-block; overflow: hidden; width: 960px; border-top:solid 1px #D7D7D7; padding-top:10px; }
+.foot a { color: Black; }
+.foot a:hover { }
+.foot_left { float: left; width: 570px; }
+.foot_left p { line-height: 20px; color: #666666; }
+.foot_right { float: right; width: 360px; text-align: right; }
+.foot_right p { line-height: 20px; color: Black; }
+.foot_right p span a { line-height: 20px; color: #9E9E9E; text-decoration: underline; }
+
+.search { position:absolute; right:215px; top:55px; z-index:900}
+.txt_border { padding-top: 1px; padding-left: 3px; font-size: 12px; font-family: 宋体; border: inset 2px white; width: 120px; height: 17px; line-height: 17px; display: block; z-index:900}
+.search_btn {position:absolute; right:160px; top:55px; z-index:900}
+
+
+/*QQ悬挂*/
+.qqbox{z-index:999;}
+.qqbox a:link { color: #000; text-decoration: none; }
+.qqbox a:visited { color: #000; text-decoration: none; }
+.qqbox a:hover { color: #f80000; text-decoration: underline; }
+.qqbox a:active { color: #f80000; text-decoration: underline; }
+.qqbox { height: auto; overflow: hidden; position: absolute; right: 0; top: 100px; color: #000000; font-size: 12px; letter-spacing: 0px; }
+.qqlv { width: 133px; height: 271px; overflow: hidden; position: relative;margin-left:0px;float:right; border:solid 1px #FAE2B9; z-index: 9; text-align:center;}
+.qq_head{ background:url(../images/else/online_tit.jpg) bottom no-repeat; width:126px; height:16px; margin:0 auto; text-align:right; padding-right:5px; padding-top:10px;}
+.qq_con{ background:url(../images/else/online_bg.jpg) top no-repeat; width:131px; height:242px; margin:0 auto; }
+.qq_con ul{padding-top:10px; }
+.qq_con li{ line-height:35px; height:35px;}
+.qq_lv2{width:22px; height:111px; float:right; }

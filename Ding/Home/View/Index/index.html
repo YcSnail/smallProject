@@ -1,0 +1,75 @@
+<include file="Public/header" />
+
+<style>
+
+    .mui-bar-nav~.mui-content {
+        padding-top: 0px;
+    }
+
+    .list-last{
+        margin-bottom: 8px;
+    }
+
+    .mui-table-view-cell.mui-active {
+        background-color: #E0E0E0;
+    }
+</style>
+
+<title>订单明细</title>
+<block name="main">
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">订单明细</h1>
+    </header>
+    <div class="mui-content content-list">
+
+        <div class="mui-card" style="margin-bottom: 35px;">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell mui-collapse mui-active">
+                    <a class="mui-navigate-right" href="#">订单信息</a>
+                    <div class="mui-collapse-content">
+                        <ul class="mui-table-view">
+                            <li class="mui-table-view-cell">合同编号: <span>JNMCSO-170111-2</span></li>
+                            <li class="mui-table-view-cell">产品: <span>硫酸镍</span></li>
+                            <li class="mui-table-view-cell">合同数量: <span>10000KG</span></li>
+                            <li class="mui-table-view-cell">已经发货: <span>200KG</span></li>
+                            <li class="mui-table-view-cell">本次发货数量: <span>200KG</span></li>
+                            <li class="mui-table-view-cell  list-last">发货日期: <span>2017-07-02</span></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">质检报告书</a>
+                    <div class="mui-collapse-content">
+                        <ul class="mui-table-view">
+                            <li class="mui-table-view-cell"><a href="{$filePath}">复制此链接从浏览器打开即可下载PDF文件</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">交货清单</a>
+                    <div class="mui-collapse-content">
+                        <ul class="mui-table-view">
+                            <li class="mui-table-view-cell">合同编号: <span>JNMCSO-170111-2</span></li>
+                            <li class="mui-table-view-cell">产品: <span>硫酸镍</span></li>
+                            <li class="mui-table-view-cell">合同数量: <span>10000KG</span></li>
+                            <li class="mui-table-view-cell">已经发货: <span>200KG</span></li>
+                            <li class="mui-table-view-cell">本次发货数量: <span>200KG</span></li>
+                            <li class="mui-table-view-cell  list-last">发货日期: <span>2017-07-02</span></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+
+
+
+    </div>
+
+</block>
+
+<include file="Public/footer" />

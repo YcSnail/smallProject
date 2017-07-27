@@ -1,0 +1,40 @@
+
+/** * This <div> element is wrapped by jCarousel around the list * Download by http://www.codefans.net * and has the classname "jcarousel-container". */
+.jcarousel-container{position: relative;}
+.jcarousel-clip{z-index: 2; padding: 0; margin:0; overflow: hidden; position: relative;}
+.jcarousel-clip .jcarousel-list{margin:0px;}
+.jcarousel-list{z-index: 1; overflow: hidden; position: relative; top: 0; left: 0; margin: 0; padding: 0;}
+.jcarousel-list li,
+.jcarousel-item{float: left; list-style: none; text-align:center; /* We set the width/height explicitly. No width/height causes infinite loops. */}
+/** * The buttons are added dynamically by jCarousel before * the <ul> list (inside the <div> described above) and * have the classnames "jcarousel-next" and "jcarousel-prev". */
+.jcarousel-next{z-index: 3; display: none;}
+.jcarousel-prev{z-index: 3; display: none;}
+.jcarousel-skin-tango .jcarousel-direction-rtl{direction: rtl;}
+.jcarousel-skin-tango .jcarousel-container-horizontal{width:800px; margin:0 auto;}
+.jcarousel-skin-tango .jcarousel-clip-horizontal{width:800px;height:40px;}
+.jcarousel-skin-tango .jcarousel-item{overflow:hidden; margin:0 5px}
+.jcarousel-skin-tango .jcarousel-item img{width:90px; height:40px;}
+/** * Horizontal Buttons */
+.jcarousel-skin-tango .jcarousel-next-horizontal{position: absolute; top:12px; right:-15px; width:8px; height:15px; cursor: pointer; background: transparent url(../images/default/scroll_right.jpg) no-repeat 0 0}
+.jcarousel-skin-tango .jcarousel-prev-horizontal{position: absolute; top:12px; left:-15px; width:8px; height:15px; cursor: pointer; background: transparent url(../images/default/scroll_left.jpg) no-repeat 0 0}
+carousel-prev-horizontal{position: absolute; top:12px; left:-15px; width:8px; height:15px; cursor: pointer; background: transparent url(../images/default/scroll_left.jpg) no-repeat 0 0}
+
+/** * This <div> element is wrapped by jCarousel around the list * Download by http://www.codefans.net * and has the classname "jcarousel-container". */
+.jcarousel2-container{position: relative;}
+.jcarousel2-clip{z-index: 2; padding: 0; margin:0; overflow: hidden; position: relative;}
+.jcarousel2-clip .jcarousel2-list{margin:0px;}
+.jcarousel2-list{z-index: 1; overflow: hidden; position: relative; top: 0; left: 0; margin: 0; padding: 0;}
+.jcarousel2-list li,
+.jcarousel2-item{float: left; list-style: none; text-align:center; /* We set the width/height explicitly. No width/height causes infinite loops. */}
+/** * The buttons are added dynamically by jCarousel before * the <ul> list (inside the <div> described above) and * have the classnames "jcarousel-next" and "jcarousel-prev". */
+.jcarousel2-next{z-index: 3; display: none;}
+.jcarousel2-prev{z-index: 3; display: none;}
+.jcarousel2-skin-tango .jcarousel2-direction-rtl{direction: rtl;}
+.jcarousel2-skin-tango .jcarousel2-container-horizontal{width:800px; margin:0 auto;}
+.jcarousel2-skin-tango .jcarousel2-clip-horizontal{width:800px;height:40px;}
+.jcarousel2-skin-tango .jcarousel2-item{overflow:hidden; margin:0 5px}
+.jcarousel2-skin-tango .jcarousel2-item img{width:90px; height:40px;}
+/** * Horizontal Buttons */
+.jcarousel2-skin-tango .jcarousel2-next-horizontal{position: absolute; top:12px; right:-15px; width:8px; height:15px; cursor: pointer; background: transparent url(../images/default/scroll_right.jpg) no-repeat 0 0}
+.jcarousel2-skin-tango .jcarousel2-prev-horizontal{position: absolute; top:12px; left:-15px; width:8px; height:15px; cursor: pointer; background: transparent url(../images/default/scroll_left.jpg) no-repeat 0 0}
+carousel2-prev-horizontal{position: absolute; top:12px; left:-15px; width:8px; height:15px; cursor: pointer; background: transparent url(../images/default/scroll_left.jpg) no-repeat 0 0}

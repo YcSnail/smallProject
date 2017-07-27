@@ -1,0 +1,161 @@
+<include file="Public/header" />
+
+<style>
+
+    .list-last{
+        margin-bottom: 8px;
+    }
+
+    .mui-table-view-cell.mui-active {
+        background-color: #E0E0E0;
+    }
+</style>
+<link href="__PUBLIC__/mui/css/miu.picker.min.css" rel="stylesheet">
+<script src="__PUBLIC__/mui/js/miu.picker.min.js"></script>
+
+<title>订单明细</title>
+<block name="main">
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">微信下单</h1>
+    </header>
+    <div class="mui-content content-list">
+        <form class="mui-input-group" id="input_example">
+            <div class="mui-input-row">
+                <label>客户名称</label>
+                <input type="text" class="mui-input-clear" name="company" placeholder="请输入客户名称">
+            </div>
+            <div class="mui-input-row">
+                <label>联系人</label>
+                <input type="text" class="mui-input-clear" name="name" placeholder="请输入联系人">
+            </div>
+            <div class="mui-input-row">
+                <label>联系电话</label>
+                <input type="number" class="mui-input-clear" name="phone" placeholder="请输入联系电话">
+            </div>
+
+            <div class="mui-input-row">
+                <label>送货日期</label>
+                <input type="text" id="pickTime" class="mui-input-clear" name="data" placeholder="请选择送货日期">
+            </div>
+
+            <div class="mui-input-row mui-select">
+                <label>产品</label>
+                    <select id="country" name="prod">
+                        <option value="">请选择产品</option>
+                        <option value="AC252004">氯化镍</option>
+                        <option value="AS253001">硫酸镍</option>
+                        <option value="AS253001EN">硫酸镍EN</option>
+                    </select>
+            </div>
+
+            <div class="mui-input-row">
+                <label>数量(吨)</label>
+                <input type="number" class="mui-input-clear" name="qty" placeholder="请输入数量">
+            </div>
+
+            <div class="mui-button-row">
+                <button type="button" class="mui-btn mui-btn-primary" >确认</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</block>
+
+<script>
+
+    /**
+     * 日期选择
+     */
+    $("#pickTime").click(function () {
+
+        var dtpicker = new mui.DtPicker({
+            type: "date",//设置日历初始视图模式
+            beginDate: new Date(2017, 06, 01),//设置开始日期
+            endDate: new Date(2099, 12, 31),//设置结束日期
+            labels: ['Year', 'Mon', 'Day']//设置默认标签区域提示语
+        });
+
+        dtpicker.show(function(items) {
+            $("#pickTime").val(items.value);
+        })
+
+    });
+
+    $(".mui-btn-primary").click(function () {
+
+        var check = true;
+        mui("#input_example input").each(function() {
+            //若当前input为空，则alert提醒
+            if(!this.value || this.value.trim() == "") {
+                var label = this.previousElementSibling;
+                mui.alert(label.innerText + "不允许为空");
+                check = false;
+                return false;
+            }
+
+            /**
+             * 判断 select 里面值是否为空
+             * @type {*}
+             */
+            var coun=$("#country").val();
+            if(coun == 0) {
+                mui.alert( "请选择对应的产品");
+                check = false;
+                return false;
+            }
+
+            if (checkMobile($("input[name ='phone']").val()) == false){
+                check = false;
+                return false;
+            }
+
+        });
+
+        //校验通过，继续执行业务逻辑
+        if(check){
+
+            mui.post("{:U('Index/getText') }",{
+
+                    company:$("input[name ='company']").val(),
+                    name:$("input[name ='company']").val(),
+                    phone:$("input[name ='phone']").val(),
+                    data:$("input[name ='data']").val(),
+                    prod:$("#country option:selected").val(),
+                    qty:$("input[name ='qty']").val(),
+                },function(data){
+
+                    if (data.code == 0){
+                        mui.alert(data.msg+',正在跳转...');
+                        $(location).attr('href', 'http://d5.boyalife.com/index.php/jinco/WCT300');
+                    }
+                    if (data.code < 0){
+                        mui.alert(data.msg);
+                    }
+
+                    //服务器返回响应，根据响应结果，分析是否登录成功；
+                },'json'
+            );
+
+        }
+
+    });
+
+    function checkMobile(str) {
+
+        var re = /^1\d{10}$/;
+        if (!re.test(str)) {
+            mui.alert( "手机号不正确,请输入正确的手机号");
+            check = false;
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
+
+
+<include file="Public/footer" />

@@ -1,0 +1,76 @@
+<include file="Public/header" />
+
+<block name="main">
+    <div class="layout-flex" id="target">
+        <!-- content start -->
+        <div class="content grey-bg">
+            <div class="my-top" style="">
+                <b class="btn-back"></b>
+                <div class="face"><img src="__PUBLIC__/dist/images/defaultuser.png"></div>
+                <p class="name">测试用户</p>
+                <!--<p class="tel">13828763726</p>-->
+            </div>
+
+            <div class="my-item">
+                <ul>
+                    <a href="/index.php/welcome/receive">
+                        <li>
+                            <div class="ico ico1"></div>
+                            <p class="receive">入库</p>
+                        </li>
+                    </a>
+                    <a href="/index.php/welcome/allocate">
+                        <li>
+                            <div class="ico ico2"></div>
+                            <p class="allocate">分配</p>
+                        </li>
+                    </a>
+                    <a href="/index.php/welcome/issue">
+                        <li>
+                            <div class="ico ico3"></div>
+                            <p class="issue">出库</p>
+                        </li>
+                    </a>
+                    <a href="/index.php/welcome/transfer">
+                        <li>
+                            <div class="ico ico1"></div>
+                            <p class="transfer">移库</p>
+                        </li>
+                    </a>
+                    <a href="/index.php/welcome/remove">
+                        <li>
+                            <div class="ico ico2"></div>
+                            <p class="remove">条码作废</p>
+                        </li>
+                    </a>
+
+                    <a href="/index.php/welcome/equipSearch">
+                        <li>
+                            <div class="ico ico3"></div>
+                            <p class="equipSearch">设备报修</p>
+                        </li>
+                    </a>
+                    <a href="/index.php/welcome/query">
+                        <li>
+                            <div class="ico ico1"></div>
+                            <p class="query">查询</p>
+                        </li>
+                    </a>
+
+                    <a href="{:U('Index/visit')}">
+                        <li>
+                            <div class="ico ico2"></div>
+                            <p class="query">客户拜访</p>
+                        </li>
+                    </a>
+
+                </ul>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <div class="mask hide"></div>
+    </div>
+</block>
+
+<include file="Public/footer" />

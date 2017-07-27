@@ -1,0 +1,498 @@
+<include file="Public/headerM" />
+<link href="__PUBLIC__/mui/css/miu.picker.min.css" rel="stylesheet">
+<script src="__PUBLIC__/mui/js/miu.picker.min.js"></script>
+
+<title>年假管理</title>
+
+
+<style>
+    body{
+        background: url("__PUBLIC__/ding/boya/images/bg_body.jpg") center top no-repeat #FFF !important;
+        margin: 0;
+        background-size: cover;
+        transition: all ease-out 0.3s;
+        padding: 0;
+        color: #006699;
+        font-size: 14px;
+        line-height: 24px;
+        font-family: "微软雅黑","宋体",Arial, Helvetica, sans-serif;
+    }
+    .btn-check{
+        width:100%;
+    }
+
+    .btn-check  button , .mui-button-row button{
+        width:49%;
+    }
+
+    .mui-btn-primary a{
+        color: #FFFFFF;
+    }
+
+    .change p{
+        color: #000000;
+    }
+
+    .mui-content {
+        background: none;
+    }
+
+    .mui-card {
+        background: none;
+    }
+
+
+    #topmain {
+        float: left;
+        width: 100%;
+        height: 40px;
+        position: relative;
+    }
+
+    #topLeft {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        background: url("__PUBLIC__/ding/boya/images/bg_logo.png") right top no-repeat;
+    }
+
+    #topRight {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        background: url("__PUBLIC__/ding/boya/images/bg_close.png" ) left top no-repeat;
+    }
+
+    #topmain h4{
+        line-height: 40px;
+        font-weight: normal;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .mui-input-row{
+        margin: 5px;
+    }
+
+    .vacation-bottom{
+        padding-bottom: 8px;
+    }
+
+    .vacation-text{
+        word-break:break-all;
+    }
+
+    .vacation-content{
+        text-align: right;margin-top: -24px; margin-bottom: 10px;
+    }
+
+    .vacation-time{
+        margin-bottom: 16px;
+    }
+
+    .mui-badge {
+        border-radius: 2px;
+    }
+
+</style>
+
+
+<div class="mui-content">
+
+    <div class="mui-content-padded" style="margin: 5px;">
+
+        <div class="mui-card">
+            <!--页眉，放置标题-->
+            <div class="mui-card-header">
+
+                <div id="topmain">
+                    <div id="topLeft"><img src="__PUBLIC__/ding/boya/images/logo.png" class="logo"></div>
+                    <h4>年假管理</h4>
+                    <div id="topRight"><a href="#" class="close">&nbsp;</a></div>
+                </div>
+
+                <!--<p  style="margin: 0 auto; color: #000000">yc-年假管理</p>-->
+            </div>
+            <!--内容区-->
+            <div class="mui-card-content">
+                <table style=" width: 100% ; height : 220px" >
+                    <tbody id="setValue">
+                        <tr>
+                            <th style="color: #DA6919">袁旭</th>
+                            <th>年假(天)</th>
+                            <th>调休(小时)</th>
+                        </tr>
+
+                        <tr>
+                            <th>原始值:</th>
+                            <th>0</th>
+                            <th>0</th>
+
+                        </tr>
+
+                        <tr>
+                            <th>新增加:</th>
+                            <th>0</th>
+                            <th>0</th>
+
+                        </tr>
+
+                        <tr>
+                            <th>已使用:</th>
+                            <th>0</th>
+                            <th>0</th>
+                        </tr>
+
+                        <tr>
+                            <th>可用数:</th>
+                            <th>0</th>
+                            <th>0</th>
+
+                        </tr>
+
+                        <tr>
+                            <th>折算天数:</th>
+                            <th>0</th>
+                            <th>0</th>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <!--页脚，放置补充信息或支持的操作-->
+            <div class="mui-card-footer">
+
+                <div class="btn-check">
+                    <button type="button" class="mui-btn mui-btn-primary button-cont-left"><a href="#list-cont-left">本次申请</a></button>
+                    <button type="button" class="mui-btn button-cont-right"><a href="#list-cont-right">历史记录</a></button>
+                </div>
+
+
+
+            </div>
+
+            <div class="mui-card-content">
+                <div class="list-cont">
+                    <div id="list-cont-left" class="change">
+
+                        <div class="mui-input-row">
+                            <label>开始时间</label>
+                            <p id="starTime" >请选择开始日期</p>
+                        </div>
+
+                        <div class="mui-input-row">
+                            <label>结束时间</label>
+                            <p id="endTime" >请选择结束日期</p>
+                        </div>
+
+                        <div class="mui-input-row">
+                            <label>类型</label>
+                            <select id="svalue">
+                                <option value="">请选择</option>
+                                <option value ="事假">事假</option>
+                                <option value ="病假">病假</option>
+                                <option value="年假">年假</option>
+                                <option value="产假">产假</option>
+                                <option value="护理假">护理假</option>
+                                <option value="丧假">丧假</option>
+                                <option value="专业考试假">专业考试假</option>
+                                <option value="产检假">产检假</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mui-input-row">
+                            <label>原因</label>
+                            <textarea id="textarea" rows="3" placeholder="请输入请假原因"></textarea>
+                        </div>
+
+                        <div class="mui-button-row" style="margin-bottom: 20px">
+                            <button type="button" class="mui-btn mui-btn-primary btn-submit" >提交</button>
+                        </div>
+
+                    </div>
+
+                    <div id="list-cont-right" class="change">
+
+                        <ul class="mui-table-view">
+
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+$().ready(function () {
+
+    $(".list-cont>.change").hide();
+    $(".btn-check button:first").addClass("mui-btn-primary").show();
+    $("#list-cont-left").show();
+
+    $(".btn-check button").click(function() {
+
+        $(".btn-check button").removeClass("mui-btn-primary");
+        $(this).addClass("mui-btn-primary");
+        $(".list-cont>.change").hide();
+        var activeTab = $(this).find("a").attr("href");
+        $(activeTab).show().fadeIn();
+        return false;
+    });
+
+
+    /**
+     * 日期选择
+     */
+    $("#starTime").click(function () {
+
+        var dtpicker = new mui.DtPicker({
+            type: "hour",//设置日历初始视图模式
+            beginDate: new Date(2017, 06, 01),//设置开始日期
+            endDate: new Date(2099, 12, 31),//设置结束日期
+            labels: ['Year', 'Mon', 'Day','Hour'],//设置默认标签区域提示语
+
+        });
+
+        dtpicker.show(function(items) {
+            $("#starTime").text(items.value);
+        });
+    });
+
+
+        /**
+         * 日期选择
+         */
+        $("#endTime").click(function () {
+
+            var dtpicker = new mui.DtPicker({
+                type: "hour",//设置日历初始视图模式
+                beginDate: new Date(2017, 06, 01),//设置开始日期
+                endDate: new Date(2099, 12, 31),//设置结束日期
+                labels: ['Year', 'Mon', 'Day','Hour'],//设置默认标签区域提示语
+            });
+
+            dtpicker.show(function(items) {
+                $("#endTime").text(items.value);
+            })
+
+        });
+
+});
+
+
+$('.btn-submit').click(function () {
+
+    var starTime = $('#starTime').text();
+    if (starTime == '请选择开始日期'){
+        mui.alert('请选择开始日期');
+        return false;
+    }
+
+    var endTime = $('#starTime').text();
+    if (endTime == '请选择结束日期'){
+        mui.alert('请选择结束日期');
+        return false;
+    }
+
+    var svalue = $("#svalue option:selected").val();
+    if ( svalue == ''){
+        mui.alert('请选择请假类型');
+        return false;
+    }
+
+    var textarea = $('#textarea').val();
+    if (textarea == ' '){
+        mui.alert('请输入请假原因');
+        return false;
+    }
+
+    // 保存用户信息 120
+    mui.post(
+        '/bmsBoya/index.php/welcome/annualLeaveManagementAjax',
+        {
+            'code':'HR120',
+            'starTime':starTime,
+            'endTime':endTime,
+            'svalue':svalue,
+            'textarea':textarea
+        },
+        function(data){
+
+            if(data.code == 0){
+                mui.alert('保存成功')
+            }else
+            if(data.code < 0){
+                mui.alert(data.message);
+            }else{
+                mui.alert('请求失败')
+            }
+
+        },'json'
+    );
+
+
+
+})
+
+
+</script>
+<script>
+
+    window.onload = function(){
+//
+//    //获取 可用休假
+//    mui.post(
+//        '/bmsBoya/index.php/welcome/annualLeaveManagementAjax',
+//        {
+//            'code':'HR110'
+//        },
+//        function(data){
+//
+//            if(data.code == 0){
+//
+//                var dataRes = data.data;
+//
+//                var year = screening(dataRes[0],1);
+//                var rest = screening(dataRes[1],1);
+//
+//                for (i=0;i<=5; i++){
+//                    $("#setValue > tr:eq("+(i+1)+") >th:eq(1)").text(year[i]);
+//                    $("#setValue > tr:eq("+(i+1)+") >th:eq(2)").text(rest[i]);
+//                    i++;
+//                }
+//
+//            }else
+//            if(data.code < 0){
+//                mui.alert(data.message);
+//            }else{
+//                mui.alert('请求失败')
+//            }
+//
+//        },'json'
+//    );
+//
+//        mui.post(
+//            '/bmsBoya/index.php/welcome/annualLeaveManagementAjax',
+//            {
+//                'code':'HR100'
+//            },
+//            function(data){
+//
+//                if(data.code == 0){
+//
+//                    var userRes = data.data;
+//
+//                    // 获取历史记录
+//                    for (i=0;i<userRes.length;i++) {
+//
+//                        // 判断状态
+//                        var setCss = new Array();
+//
+//                        if (userRes[i]['status'] == '审批完成'){
+//                            setCss['color'] = '#00CC00;';
+//                            setCss['class'] = 'mui-icon-checkmarkempty';
+//                        }
+//
+//                        if (userRes[i]['status'] == '未审批'){
+//                            setCss['color'] = '#F70000;';
+//                            setCss['class'] = 'mui-icon-closeempty';
+//                        }
+//
+//                        if (userRes[i]['status'] == '审批中'){
+//                            setCss['color'] = 'color: #F78900;';
+//                            setCss['class'] = 'mui-icon-spinner-cycle mui-spin';
+//                        }
+//
+//                        var list =
+//                            '<li class="mui-table-view-cell vacation">'+
+//                            '<p><span>'+userRes[i]['leavetype']+'</span></p>'+
+//                            '<p class="vacation-bottom vacation-content" >'+
+//                            '<span>'+userRes[i]['status']+'</span>'+
+//                            "<i style= 'color: "+setCss['color']+" ' class='mui-icon "+setCss['class'] +" '></i>"+
+//                            '</p>'+
+//                            '<p class="vacation-bottom vacation-time">'+
+//                            '<span class="mui-badge mui-badge-primary">'+userRes[i]['startdatetime']+'</span>'+
+//                            '<span style="display: block;margin-left: 50px;"><i class="mui-icon mui-icon-arrowthindown"></i></span>'+
+//                            '<span class="mui-badge mui-badge-primary">'+userRes[i]['enddatetime']+'</span>'+
+//                            '</p>'+
+//                            '<p class="vacation-bottom vacation-text"><span>'+userRes[i]['note']+'</span></p>'+
+//                            '</li>';
+//
+//                        $('.change > ul').append(list);
+//                    }
+//
+//                }else
+//                if(data.code < 0){
+//                    mui.alert(data.message);
+//                }else{
+//                    mui.alert('请求失败')
+//                }
+//
+//            },'json'
+//        );
+
+
+
+};
+
+    // 过滤参数
+    /**
+     *
+     * @param arr 传入数组,
+     * @param type  状态
+     * @returns {Array}
+     */
+    function screening(arr,type) {
+        var newarr = new Array();
+        var i=0;
+        for (var k in arr){
+
+            if (type == 1){
+                //年假管理 过滤
+                if ( (k == 'type') || ( k =='unit' )){
+
+                }else{
+                    newarr[i] = arr[k];
+                    i++;
+                }
+            }
+
+            // 用于历史记录 过滤
+            if (type == 2){
+
+                //过滤 指定参数
+                if ( (k == 'empcode') || ( k =='empname' ) || ( k =='applytype' ) || ( k =='applydate' )){
+
+                }else{
+                    newarr[i] = arr[k];
+                    i++;
+                }
+            }
+
+        }
+        return newarr;
+    }
+
+
+</script>
+
+
+
+
+</body>
+</html>
