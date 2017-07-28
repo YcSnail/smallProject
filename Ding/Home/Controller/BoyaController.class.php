@@ -4,18 +4,46 @@ use Think\Controller;
 class BoyaController extends Controller {
     public function index(){
 
+
+//        foreach ($_POST as $key=>$value){
+//            $this->checkParams($value,$key);
+//        }
+
         $stratTime = '2017-07-27 14:00'.':00';
         $endTime =   '2017-07-29 14:30'.':00';
 
         $time = $this->computationTime($stratTime,$endTime);
-        var_dump($time);
-        die();
+
+
 
         $this->display();
     }
 
     /**
-     *
+     * 展示 查询请假记录详细信息
+     */
+    public function detail(){
+
+        $this->display();
+    }
+
+    /**
+     * 检测变量
+     * @param $params
+     * @param string $msg
+     * @return string
+     */
+    public function checkParams($params,$msg = ''){
+
+        $param = trim($params);
+        if (empty($param)){
+            $this->ajaxRes(-1,'请填写完整的信息');
+        }
+        return $param;
+    }
+
+    /**
+     * 计算时间
      * @param $stratTime
      * @param $endTime
      * @return int
@@ -76,6 +104,7 @@ class BoyaController extends Controller {
     }
 
     /**
+     * 检查 时间是否在正常范围内
      * @param $time
      * @return bool
      */
@@ -84,12 +113,10 @@ class BoyaController extends Controller {
 
         if (empty($arr)){
             $this->ajaxRes(-1,'输入时间有误');
-            return false;
         }
 
         if ( ($arr[0] == 8 && $arr[1] == 00 ) || ($arr[0] == 17 && $arr[1] == 30 ) ){
             $this->ajaxRes(-1,'请选择 有效的工作时间');
-            die();
         }
 
         return true;

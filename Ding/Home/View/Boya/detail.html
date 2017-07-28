@@ -1,0 +1,166 @@
+<include file="Public/headerM" />
+<link href="__PUBLIC__/mui/css/miu.picker.min.css" rel="stylesheet">
+<script src="__PUBLIC__/mui/js/miu.picker.min.js"></script>
+
+<title>详细信息</title>
+
+<style>
+
+    body{
+        background: url("__PUBLIC__/ding/boya/images/bg_body.jpg") center top no-repeat #FFF !important;
+        margin: 0;
+        background-size: cover;
+        transition: all ease-out 0.3s;
+        padding: 0;
+        color: #006699;
+        font-size: 14px;
+        line-height: 24px;
+        font-family: "微软雅黑","宋体",Arial, Helvetica, sans-serif;
+    }
+
+    #topmain {
+        float: left;
+        width: 100%;
+        height: 40px;
+        position: relative;
+    }
+
+    #topLeft {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        background: url("__PUBLIC__/ding/boya/images/bg_logo.png") right top no-repeat;
+    }
+
+    #topRight {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        background: url("__PUBLIC__/ding/boya/images/bg_close.png" ) left top no-repeat;
+    }
+
+    #topmain h4{
+        line-height: 40px;
+        font-weight: normal;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .mui-content {
+        background: none;
+    }
+
+    .mui-card {
+        background: none;
+    }
+
+
+    p{
+        color: #000;
+    }
+    .cont{
+        padding: 6px 8px;
+        background: rgba(234, 242, 235, 0.51);
+        border-radius: 11px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="mui-card">
+
+    <div class="mui-card-header">
+
+        <div id="topmain">
+            <div id="topLeft"><img src="__PUBLIC__/ding/boya/images/logo.png" class="logo"></div>
+            <h4>申请详细</h4>
+            <div id="topRight"><a href="#" class="close">&nbsp;</a></div>
+        </div>
+    </div>
+
+    <div class="mui-card-content">
+        <div class="mui-card-content-inner">
+            <!--<div class="cont">-->
+                <!--<p>朱烨</p>-->
+                <!--<p><span style="margin-right: 10px"><i class="mui-icon mui-icon-paperplane"></i><span>发起审批</span></span><span>2017-03-15 13:05:59 </span></p>-->
+            <!--</div>-->
+
+            <!--<div class="cont">-->
+                <!--<p>李诣书</p>-->
+                <!--<p><span style="margin-right: 10px"><i class="mui-icon mui-icon-flag"></i><span>同意</span></span> <span>2017-03-15 15:27:52 </span></p>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+    $().ready(function () {
+
+        mui.post(
+            // 获取申请详细信息
+            '/bmsBoya/index.php/welcome/annualLeaveManagementAjax',
+            {
+                'code':'HR120',
+                'no':{$no}
+            },
+            function(data){
+
+                if(data.code == 0){
+
+                    var listRes = data;
+                    var list = '';
+
+                    // 获取详细记录
+                    for (i=0;i<listRes.length;i++) {
+
+                        // 切割字符串
+                        var newArr = new Array();
+                        var time = listRes[i]['time'];
+                        newArr =  time.split(".");
+
+                        var setCss = new Array();
+                        if (i == 0){
+                            setCss['class'] = 'mui-icon-paperplane';
+                        }else{
+                            setCss['class'] = 'mui-icon-flag';
+                        }
+
+                        list +=
+                            '<div class="cont">'+
+                            '<p>'+listRes[i]['username']+'</p>'+
+                            '<p>' +
+                            '<span style="margin-right: 10px">' +
+                            "<i class='mui-icon "+setCss['class'] +" '></i>"+
+                            '<span>'+listRes[i]['action']+'</span>' +
+                            '</span>' +
+                            '<span>'+listRes[i]['date'] + '&nbsp&nbsp' + newArr[0]+'</span>' +
+                            '</p>'+
+                            '</div>';
+                    }
+                    $('.mui-card-content-inner').append(list);
+                }else
+                if(data.code < 0){
+                    mui.alert(data.message);
+                }else{
+                    mui.alert('请求失败')
+                }
+
+            },'json'
+
+        );
+
+    });
+
+</script>
+
+
+
+</body>
+</html>
