@@ -261,11 +261,29 @@ $().ready(function () {
     $("#starTime").click(function () {
 
         var dtpicker = new mui.DtPicker({
-            type: "hour",//设置日历初始视图模式
+            type: "datetime",//设置日历初始视图模式
             beginDate: new Date(2017, 06, 01),//设置开始日期
             endDate: new Date(2099, 12, 31),//设置结束日期
-            labels: ['Year', 'Mon', 'Day','Hour'],//设置默认标签区域提示语
+            labels: ['年', '月', '日','时','分'],//设置默认标签区域提示语
+            customData: {
+                "h": [
+                    { value: "8", text: "8" },
+                    { value: "9", text: "9" },
+                    { value: "10", text: "10" },
+                    { value: "11", text: "11" },
+                    { value: "12", text: "12" },
+                    { value: "13", text: "13" },
+                    { value: "14", text: "14" },
+                    { value: "15", text: "15" },
+                    { value: "16", text: "16" },
+                    { value: "17", text: "17" }
 
+                ],
+                "i": [
+                    { value: "30", text: "00" },
+                    { value: "00", text: "30" }
+                ]
+            }
         });
 
         dtpicker.show(function(items) {
@@ -280,15 +298,40 @@ $().ready(function () {
         $("#endTime").click(function () {
 
             var dtpicker = new mui.DtPicker({
-                type: "hour",//设置日历初始视图模式
+                type: "datetime",//设置日历初始视图模式
                 beginDate: new Date(2017, 06, 01),//设置开始日期
                 endDate: new Date(2099, 12, 31),//设置结束日期
-                labels: ['Year', 'Mon', 'Day','Hour'],//设置默认标签区域提示语
+                labels: ['年', '月', '日','时','分'],//设置默认标签区域提示语
+                customData: {
+                    "h": [
+                        { value: "8", text: "8" },
+                        { value: "9", text: "9" },
+                        { value: "10", text: "10" },
+                        { value: "11", text: "11" },
+                        { value: "12", text: "12" },
+                        { value: "13", text: "13" },
+                        { value: "14", text: "14" },
+                        { value: "15", text: "15" },
+                        { value: "16", text: "16" },
+                        { value: "17", text: "17" }
+
+                    ],
+                    "i": [
+                        { value: "30", text: "00" },
+                        { value: "00", text: "30" }
+                    ]
+                }
             });
 
             dtpicker.show(function(items) {
                 $("#endTime").text(items.value);
-            })
+            });
+
+//            var tt = $("[data-id='picker-i'] > div> ul > li").length;
+//            alert(tt);
+//            return;
+//
+//            $("[data-id='picker-i'] > div> ul > li").text();
 
         });
 
