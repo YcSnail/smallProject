@@ -1,0 +1,236 @@
+<include file="Public/headerM" />
+<link href="__PUBLIC__/mui/css/miu.picker.min.css" rel="stylesheet">
+<script src="__PUBLIC__/mui/js/miu.picker.min.js"></script>
+<title>吸烟登记</title>
+
+<style>
+    .mui-btn-primary{
+        width: 50%;
+    }
+    p{
+        line-height: 36px;
+    }
+
+    .btn-check{
+        width:100%;
+    }
+
+    .btn-check  button , .mui-button-row button{
+        width:49%;
+    }
+
+    .mui-btn-primary a{
+        color: #FFFFFF;
+    }
+
+    .change p{
+        color: #000000;
+    }
+    .foot-content div p{
+        line-height: 22px;
+        font-size: 12px;
+    }
+
+    .content-box{
+        text-align: center;
+    }
+
+    #showtime{
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+
+
+</style>
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-pull-left"></a>
+    <h1 class="mui-title">吸烟登记</h1>
+</header>
+
+<div class="mui-content">
+
+    <div class="mui-card">
+        <!--页眉，放置标题-->
+        <!--内容区-->
+        <div class="mui-card-header">
+            <div class="btn-check">
+                <button type="button" class="mui-btn mui-btn-primary button-cont-left"><a href="#list-cont-left">本次申请</a></button>
+                <button type="button" class="mui-btn button-cont-right"><a href="#list-cont-right">历史记录</a></button>
+            </div>
+        </div>
+
+        <div class="mui-card-content">
+            <div class="list-cont">
+                <div id="list-cont-left" class="change">
+
+                    <div class="mui-input-row">
+                        <label>姓名</label>
+                        <p>王小虎</p>
+                    </div>
+
+                    <div class="content-time">
+                        <div class="content-box">
+                                <div id="showtime">
+                                    <span>00</span>
+                                    <span>:</span>
+                                    <span>00</span>
+                                    <span>:</span>
+                                    <span>00</span>
+                                    <span>:</span>
+                                    <span>00</span>
+                                </div>
+                                <div class="bnt">
+                                    <!--<button>复位</button>-->
+                                    <button>启动</button>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="foot-content" style="margin-left: 16px">
+                        <p>公司规定:</p>
+                        <div style="margin-left: 16px">
+                            <p>
+                                <span class="mui-badge mui-badge-danger">1</span>
+                                <span style="padding-left: 4px">第一条 为规范员工行为,全面提升公司整体服务水平特制定本管理制度</span>
+                            </p>
+                            <p>
+                                <span class="mui-badge mui-badge-danger">2</span>
+                                <span style="padding-left: 4px">第一条 为规范员工行为,全面提升公司整体服务水平特制定本管理制度</span>
+                            </p>
+                            <p>
+                                <span class="mui-badge mui-badge-danger">3</span>
+                                <span style="padding-left: 4px">第一条 为规范员工行为,全面提升公司整体服务水平特制定本管理制度</span>
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="list-cont-right" class="change">
+
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell">
+                            <p>
+                                <span>2017-07-31 12:30</span>
+                                <i class="mui-icon mui-icon-arrowthinright"></i>
+                                <span>2017-07-31 12:50</span>
+                            </p>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <p>
+                                <span>2017-07-31 12:30</span>
+                                <i class="mui-icon mui-icon-arrowthinright"></i>
+                                <span>2017-07-31 12:50</span>
+                            </p>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <p>
+                                <span>2017-07-31 12:30</span>
+                                <i class="mui-icon mui-icon-arrowthinright"></i>
+                                <span>2017-07-31 12:50</span>
+                            </p>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--页脚，放置补充信息或支持的操作-->
+    </div>
+
+</div>
+
+
+<script>
+
+    $(".list-cont>.change").hide();
+    $(".btn-check button:first").addClass("mui-btn-primary").show();
+    $("#list-cont-left").show();
+
+    $(".btn-check button").click(function() {
+
+        $(".btn-check button").removeClass("mui-btn-primary");
+        $(this).addClass("mui-btn-primary");
+        $(".list-cont>.change").hide();
+        var activeTab = $(this).find("a").attr("href");
+        $(activeTab).show().fadeIn();
+        return false;
+    });
+
+        var hour=0;
+        var min=0;
+        var sec=0;
+        var ms=0;
+        var timer=null;
+
+//        //点击第一个按钮
+//        $('.bnt button:eq(0)').click(function(){
+//
+//            if($('.bnt button:eq(1)').html() == '启动'){
+//                min=0;
+//                sec=0;
+//                ms=0;
+//                hourStr=0;
+//                $('#showtime span:eq(0)').html('00');
+//                $('#showtime span:eq(2)').html('00');
+//                $('#showtime span:eq(4)').html('00');
+//                $('#showtime span:eq(6)').html('00');
+//            }
+//
+//        });
+
+        //点击第二个按钮
+        $('.bnt button:eq(0)').click(function(){
+            if($(this).html()=='启动'){
+                $(this).html('停止');
+                clearInterval(timer);
+                timer=setInterval(show,10)
+            }else{
+                $(this).html('启动');
+                clearInterval(timer);
+            }
+        });
+//生成时间
+        function show(){
+            ms++;
+
+            if(sec==60){
+                min++;sec=0;
+            }
+            if(ms==100){
+                sec++;ms=0;
+            }
+            if (min==60){
+                hour++;min=0;
+            }
+            var msStr=ms;
+            if(ms<10){
+                msStr="0"+ms;
+            }
+            var secStr=sec;
+            if(sec<10){
+                secStr="0"+sec;
+            }
+            var minStr=min;
+            if(min<10){
+                minStr="0"+min;
+            }
+            var hourStr=hour;
+            if(hour<10){
+                hourStr="0"+hour;
+            }
+
+            $('#showtime span:eq(0)').html(hourStr);
+            $('#showtime span:eq(2)').html(minStr);
+            $('#showtime span:eq(4)').html(secStr);
+            $('#showtime span:eq(6)').html(msStr);
+        }
+
+</script>
+
+</body>
+</html>
