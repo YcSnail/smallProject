@@ -19,6 +19,29 @@ class BoyaController extends Controller {
         $this->display();
     }
 
+
+    /**
+     * 请假审批页面
+     */
+    public function check(){
+        $this->display();
+    }
+
+    /**
+     * 个人请假记录页面
+     */
+    public function leave(){
+        $this->display();
+    }
+
+    /**
+     * 计时器页面
+     */
+    public function time(){
+        $this->display();
+    }
+
+
     /**
      * 展示 查询请假记录详细信息
      */
@@ -26,6 +49,22 @@ class BoyaController extends Controller {
 
         $this->display();
     }
+
+    /**
+     * 访客登记
+     */
+    public function visitor(){
+
+        $this->display();
+    }
+
+    /**
+     * 吸烟登记
+     */
+    public function smoke(){
+        $this->display();
+    }
+
 
     /**
      * 检测变量

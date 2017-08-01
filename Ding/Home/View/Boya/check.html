@@ -1,0 +1,160 @@
+<include file="Public/headerM" />
+<!--<link href="__PUBLIC__/mui/css/miu.picker.min.css" rel="stylesheet">-->
+<!--<script src="__PUBLIC__/mui/js/miu.picker.min.js"></script>-->
+<title>请假审批页面</title>
+
+<style>
+
+    body{
+        background: url("__PUBLIC__/ding/boya/images/bg_body.jpg") center top no-repeat #FFF !important;
+        margin: 0;
+        background-size: cover;
+        transition: all ease-out 0.3s;
+        padding: 0;
+        color: #006699;
+        font-size: 14px;
+        line-height: 24px;
+        font-family: "微软雅黑","宋体",Arial, Helvetica, sans-serif;
+    }
+
+    #topmain {
+        float: left;
+        width: 100%;
+        height: 40px;
+        /*position: relative;*/
+    }
+
+    #topLeft {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        background: url("__PUBLIC__/ding/boya/images/bg_logo.png") right top no-repeat;
+    }
+
+    #topRight {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        background: url("__PUBLIC__/ding/boya/images/bg_close.png" ) left top no-repeat;
+    }
+
+    #topmain h4{
+        line-height: 32px;
+        font-weight: normal;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .mui-content {
+        background: none;
+    }
+
+    .mui-table-view {
+        background-color: rgba(234, 242, 235, 0.51);
+    }
+
+    .mui-card {
+        background: none;
+    }
+
+
+    p{
+        color: #000;
+    }
+
+</style>
+
+<div class="mui-content">
+
+    <div class="mui-card">
+        <!--页眉，放置标题-->
+        <div class="mui-content-padded">
+            <div class="mui-card-header">
+                <div id="topmain">
+                    <div id="topLeft"><img src="__PUBLIC__/ding/boya/images/logo.png" class="logo"></div>
+                    <h4>待审批列表</h4>
+                    <div id="topRight"><a href="#" class="close">&nbsp;</a></div>
+                </div>
+            </div>
+            <!--内容区-->
+            <div class="mui-card-content">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell" style="display: none">
+                        <p>
+                            <span>待审批-</span>
+                            <span>HR 安徽综合管理部</span>
+                        </p>
+                        <p>
+                            <span>朱永娇-</span>
+                            <span>加班(假日加班)</span>
+                        </p>
+                        <p>2015/01/01 09:01</p>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    $().ready(function () {
+
+        //ajax
+        var data = {"code":0,"message":"success","openid":"manager7668","bmsuser":"TEAVONTU","data":[{"subject":"！待审批 销售申请 - [优惠价申请] - 2017/05/10 18:05","status":"审批中","date":"2017-05-22 19:41:18","no":"CDABA6750660479998A2AB4DCBB8B7D2","rolename":"APP销售-经理","username":"Teavon Tu"}]};
+
+        if(data.code == 0){
+            var dataRes = data.data;
+
+            var length = dataRes.length;
+            var list = '';
+            for (i=0;i<length; i++){
+
+//                var status = '';
+//                var subjectArr = new Array();
+                var subject = '';
+
+                subject = dataRes[i]['subject'];
+//                subjectArr = subject.split(" ");
+//                status =  subjectArr[0].substr(1,subjectArr.length);
+
+                list +=
+                    '<li class="mui-table-view-cell">'+
+                        '<p>'+
+                            '<span>'+dataRes[i]['subject']+'</span>'+
+                        '</p>'+
+//                        '<p>'+
+//                            '<span>'+subjectArr[1]+'-</span>'+
+//                            '<span>'+subjectArr[3]+'</span>'+
+//                        '</p>'+
+//                        '<p>'+subjectArr[5]+ '  ' +subjectArr[6]+
+                    '</li>';
+                i++;
+            }
+
+            $('.mui-table-view').append(list);
+
+        }else
+        if(data.code < 0){
+            mui.alert(data.message);
+        }else{
+            mui.alert('请求失败')
+        }
+
+    });
+
+</script>
+
+
+</body>
+</html>

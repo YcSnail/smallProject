@@ -1,0 +1,172 @@
+<include file="Public/headerM"/>
+
+<title>审批列表</title>
+
+<style>
+
+    body{
+        background: url("__PUBLIC__/ding/boya/images/bg_body.jpg") center top no-repeat #FFF !important;
+        margin: 0;
+        background-size: cover;
+        transition: all ease-out 0.3s;
+        padding: 0;
+        color: #006699;
+        font-size: 14px;
+        line-height: 24px;
+        font-family: "微软雅黑","宋体",Arial, Helvetica, sans-serif;
+    }
+
+    #topmain {
+        float: left;
+        width: 100%;
+        height: 40px;
+        /*position: relative;*/
+    }
+
+    #topLeft {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        background: url("__PUBLIC__/ding/boya/images/bg_logo.png") right top no-repeat;
+    }
+
+    #topRight {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 150px;
+        height: 40px;
+        background: url("__PUBLIC__/ding/boya/images/bg_close.png" ) left top no-repeat;
+    }
+
+    #topmain h4{
+        line-height: 32px;
+        font-weight: normal;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .mui-content {
+        background: none;
+    }
+
+    .mui-table-view {
+        background-color: rgba(234, 242, 235, 0.51);
+    }
+
+    .mui-card {
+        background: none;
+    }
+
+    .mui-btn-primary a{
+        color: #FFFFFF;
+    }
+
+    .btn-check{
+        width:100%;
+    }
+
+    .btn-check  button , .mui-button-row button{
+        width:49%;
+    }
+
+    p{
+        color: #000;
+    }
+
+</style>
+
+<div class="mui-content">
+
+    <div class="mui-card">
+        <!--页眉，放置标题-->
+        <div class="mui-content-padded">
+            <div class="mui-card-header">
+                <div id="topmain">
+                    <div id="topLeft"><img src="__PUBLIC__/ding/boya/images/logo.png" class="logo"></div>
+                    <h4>审批列表</h4>
+                    <div id="topRight"><a href="#" class="close">&nbsp;</a></div>
+                </div>
+            </div>
+
+            <div class="mui-card-footer">
+
+                <div class="btn-check">
+                    <button type="button" class="mui-btn mui-btn-primary button-cont-left"><a href="#list-cont-left">待审批</a></button>
+                    <button type="button" class="mui-btn button-cont-right"><a href="#list-cont-right">历史申请</a></button>
+                </div>
+            </div>
+            <!--内容区-->
+            <div class="mui-card-content">
+                <div class="list-cont">
+                    <div id="list-cont-left" class="change">
+                            <ul class="mui-table-view">
+                                <li class="mui-table-view-cell">
+                                    <p>
+                                        <span>待审批-</span>
+                                        <span>HR 安徽综合管理部</span>
+                                    </p>
+                                    <p>
+                                        <span>朱永娇-</span>
+                                        <span>加班(假日加班)</span>
+                                    </p>
+                                    <p>2015/01/01 09:01</p>
+                                </li>
+                            </ul>
+
+                    </div>
+
+                    <div id="list-cont-right" class="change">
+
+                        <ul class="mui-table-view">
+
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    $().ready(function () {
+
+        $(".list-cont>.change").hide();
+        $(".btn-check button:first").addClass("mui-btn-primary").show();
+        $("#list-cont-left").show();
+
+        $(".btn-check button").click(function () {
+
+            $(".btn-check button").removeClass("mui-btn-primary");
+            $(this).addClass("mui-btn-primary");
+            $(".list-cont>.change").hide();
+            var activeTab = $(this).find("a").attr("href");
+            $(activeTab).show().fadeIn();
+            return false;
+        });
+
+        var data = {"code":0,"message":"success","openid":"manager7668","bmsuser":"TEAVONTU","data":[{"subject":"！待审批 感知医疗采购部-费用订单【PF-05011707083】- 2017/07/27 15:07","status":"审批中","no":"PF-05011707083","aprover":"周薇薇","email":"WEIWEI.ZHOU@BOYALIFE.COM"}]};
+
+        console.log(data);
+
+
+
+    })
+
+</script>
+
+
+</body>
+</html>

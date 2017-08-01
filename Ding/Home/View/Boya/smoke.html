@@ -31,6 +31,10 @@
         font-size: 12px;
     }
 
+    .content-time{
+        margin: 10px;
+    }
+
     .content-box{
         text-align: center;
     }
@@ -68,6 +72,14 @@
                         <label>姓名</label>
                         <p>王小虎</p>
                     </div>
+                    <div class="mui-input-row time-content">
+                        <label>开始时间</label>
+                        <p></p>
+                    </div>
+                    <div class="mui-input-row time-content">
+                        <label>结束时间</label>
+                        <p></p>
+                    </div>
 
                     <div class="content-time">
                         <div class="content-box">
@@ -75,14 +87,9 @@
                                     <span>00</span>
                                     <span>:</span>
                                     <span>00</span>
-                                    <span>:</span>
-                                    <span>00</span>
-                                    <span>:</span>
-                                    <span>00</span>
                                 </div>
                                 <div class="bnt">
-                                    <!--<button>复位</button>-->
-                                    <button>启动</button>
+                                    <button>开始</button>
                                 </div>
                         </div>
                     </div>
@@ -147,54 +154,73 @@
 
 <script>
 
-    $(".list-cont>.change").hide();
-    $(".btn-check button:first").addClass("mui-btn-primary").show();
-    $("#list-cont-left").show();
+    $().ready(function () {
 
-    $(".btn-check button").click(function() {
-
-        $(".btn-check button").removeClass("mui-btn-primary");
-        $(this).addClass("mui-btn-primary");
         $(".list-cont>.change").hide();
-        var activeTab = $(this).find("a").attr("href");
-        $(activeTab).show().fadeIn();
-        return false;
-    });
+        $(".btn-check button:first").addClass("mui-btn-primary").show();
+        $("#list-cont-left").show();
 
-        var hour=0;
+        $(".btn-check button").click(function() {
+
+            $(".btn-check button").removeClass("mui-btn-primary");
+            $(this).addClass("mui-btn-primary");
+            $(".list-cont>.change").hide();
+            var activeTab = $(this).find("a").attr("href");
+            $(activeTab).show().fadeIn();
+            return false;
+        });
+
+
+        // 设置 时间
         var min=0;
-        var sec=0;
+        var sec=1;
         var ms=0;
         var timer=null;
 
-//        //点击第一个按钮
-//        $('.bnt button:eq(0)').click(function(){
-//
-//            if($('.bnt button:eq(1)').html() == '启动'){
-//                min=0;
-//                sec=0;
-//                ms=0;
-//                hourStr=0;
-//                $('#showtime span:eq(0)').html('00');
-//                $('#showtime span:eq(2)').html('00');
-//                $('#showtime span:eq(4)').html('00');
-//                $('#showtime span:eq(6)').html('00');
-//            }
-//
-//        });
+        //设置状态
+        var status = 1;
 
-        //点击第二个按钮
+        // 用户没有待计时
+        if (status == 1){
+            var createTime = '2017-08-01 14:45:00';
+            var time = '';
+
+            time = computingTime(createTime);
+
+            if (time == false){
+                return;
+            }
+            min = time[0];
+            sec = time[1];
+
+            $('.bnt button:eq(0)').html('结束');
+            clearInterval(timer);
+            timer=setInterval(show,10);
+            $('.time-content:eq(0) > p').html(createTime);
+        }
+
+        //点击第一个按钮
         $('.bnt button:eq(0)').click(function(){
-            if($(this).html()=='启动'){
-                $(this).html('停止');
+
+            if($(this).html()=='开始'){
+                //判断是否重复按键
+                if ($('.time-content:eq(1) > p').html() != ''){
+                    mui.alert('不能重复计时');
+                    return;
+                }
+                $(this).html('结束');
                 clearInterval(timer);
-                timer=setInterval(show,10)
+                timer=setInterval(show,10);
+                //设置开始时间
+                $('.time-content:eq(0) > p').html(getTime());
             }else{
-                $(this).html('启动');
+                $(this).html('开始');
                 clearInterval(timer);
+                $('.time-content:eq(1) > p').html(getTime());
             }
         });
-//生成时间
+
+        //生成时间
         function show(){
             ms++;
 
@@ -203,9 +229,6 @@
             }
             if(ms==100){
                 sec++;ms=0;
-            }
-            if (min==60){
-                hour++;min=0;
             }
             var msStr=ms;
             if(ms<10){
@@ -219,16 +242,80 @@
             if(min<10){
                 minStr="0"+min;
             }
-            var hourStr=hour;
-            if(hour<10){
-                hourStr="0"+hour;
+
+            $('#showtime span:eq(0)').html(minStr);
+            $('#showtime span:eq(2)').html(secStr);
+        }
+
+        // 获取当前时间
+        function getTime() {
+            var date = new Date(); //日期对象
+            var time = new Array;
+            var now = '';
+            time[0] = date.getFullYear(); //读英文就行了
+            time[1] = (date.getMonth()+1);//取月的时候取的是当前月-1如果想取当前月+1就可以了
+            time[2] = date.getDate();
+            time[3] = date.getHours();
+            time[4] = date.getMinutes();
+            time[5] = date.getSeconds();
+
+            for (i=0;i<6;i++){
+                time[i] = addZero(time[i]);
+            }
+            now = time[0]+'-'+time[1]+'-'+time[2]+' '+time[3]+':'+time[4]+':'+time[5];
+            return now;
+        }
+
+        // 美化日期 7 => 07
+        function addZero(time) {
+            if (time < 10){
+                time = '0'+time;
+            }
+            return time
+        }
+
+        // 计算时间
+        function computingTime(createTime) {
+            var nowTiem = getTime();
+            var time = new Array();
+            var nowTiemArr = new Array()
+            var createTimeArr = new Array();
+
+            // 字符串转数组, 删去年月日
+            nowTiemArr = nowTiem.split(' ');
+            createTimeArr = createTime.split(' ');
+
+            // 格式化 时分秒,计算 分秒 差值
+            nowTiemArr = nowTiemArr[1].split(':');
+            createTimeArr = createTimeArr[1].split(':');
+
+            // 判断时间是否 符合规范 时间间隔不能超过1小时
+            // 过滤时间
+            if ( ( (nowTiemArr[0] - createTimeArr[0] ) < 0 ) || ( nowTiemArr[0] == createTimeArr[0] ) && ( nowTiemArr[1] < createTimeArr[1] ) ){
+                mui.alert('开始时间不能大于当前时间');
+                return false;
             }
 
-            $('#showtime span:eq(0)').html(hourStr);
-            $('#showtime span:eq(2)').html(minStr);
-            $('#showtime span:eq(4)').html(secStr);
-            $('#showtime span:eq(6)').html(msStr);
+            if ( (nowTiemArr[0] - createTimeArr[0] > 1) || ( (nowTiemArr[0] > createTimeArr[0] ) && ( nowTiemArr[1] > createTimeArr[1] ) ) ){
+                mui.alert('时间间隔不能大于1小时');
+                return false;
+            }
+
+            for (i=1;i<3;i++){
+                // 时间大小
+                if ( nowTiemArr[i] < createTimeArr[i]){
+                    time[i-1] = 60 - createTimeArr[i] + parseInt(nowTiemArr[i]);
+                }else {
+                    time[i-1] = nowTiemArr[i] - createTimeArr[i];
+                }
+
+            }
+
+            return time;
         }
+
+
+    });
 
 </script>
 
