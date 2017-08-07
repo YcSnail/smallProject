@@ -1,0 +1,179 @@
+<html><head><script language="javascript">
+    function fm_submit(){
+
+        form1.Checkmemo.value = form1.cmemo.value;
+        //alert(form1.Checkmemo.value);
+
+        if (form1.radiobudget[0].checked)
+            form1.CheckStatus.value = 'Y';
+        else
+            form1.CheckStatus.value = 'N';
+
+        if (form1.radioprice[0].checked)
+            form1.CheckStatus.value = form1.CheckStatus.value + 'Y';
+        else
+            form1.CheckStatus.value = form1.CheckStatus.value + 'N';
+
+        if (form1.radioht[0].checked)
+            form1.CheckStatus.value = form1.CheckStatus.value + 'Y';
+        else
+            form1.CheckStatus.value = form1.CheckStatus.value + 'N';
+
+        //alert(form1.CheckStatus.value);
+        //return;
+
+        if (form1.execStat.value=='0'){
+            alert("对不起，您已经执行过审批操作，不能重复审批");
+            return;
+        }
+
+        flag=confirm("您确认提交审批?");
+        if (flag==true){
+            document.form1.submit();}
+    }
+</script>
+
+
+
+
+
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="robots" content="all">
+    <meta name="author" content="太仓苏易信息科技有限公司@www.suyee.net.cn">
+    <meta name="Copyright" content="Copyright (c) SUYEE.Inc">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>博雅控股 采购订单审批....</title>
+    <link rel="icon" href="h5/favicon.ico" type="image/x-icon" media="screen">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" media="screen">
+    <link href="h5/css/style.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body class="mui-android mui-android-6 mui-android-6-0 mui-ios mui-wechat mui-ios-9 mui-ios-9-1 mui-wechat-6 mui-wechat-6-5 mui-wechat-6-5-7"><form name="form1" action="poExec.asp" method="post">
+
+    <input type="hidden" name="guid" value="B1ACF4FAAA1045DE87953A56C528B04F">
+    <input type="hidden" name="levelid" value="82">
+    <input type="hidden" name="roleid" value="10">
+    <input type="hidden" name="nextroleid" value="241">
+    <input type="hidden" name="CheckStatus" value="N">
+    <input type="hidden" name="execStat" value="">
+    <input type="hidden" name="Checkmemo" value="">
+</form>
+
+<div id="topmain">
+    <div id="topLeft"><img src="h5/images/logo.png" class="logo"></div>
+    <h2>采购订单审批</h2>
+    <div id="topRight"><a href="#" class="close">&nbsp;</a></div>
+</div><!--//topmain -->
+<!--<div class="mui-content">
+
+        <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+
+        <div class="mui-content-padded" style="margin: 5px; padding-top: 44px;">-->
+
+<div id="divmain">
+    <form action="" method="get">
+        <p><label class="labeltxt">采购订单：</label><input name="" type="text" class="inputtxt" value="PN-39001707003" readonly="true" style="width:28%;">
+            <label class="labeltxt">时间：</label><input name="" type="text" class="inputtxt" style="width:28%;" value="20170714" readonly="true"></p>
+        <p><label class="labeltxt">创建人：</label><input name="" type="text" class="inputtxt" style="width:28%;" value="管理员" readonly="true">
+            <label class="labeltxt">部门：</label><input name="" type="text" class="inputtxt" style="width:28%;" value="IT部" readonly="true"></p>
+        <p><label class="labeltxt">用途：</label><input name="" type="text" class="inputtxt" style="width:78%;" value="" readonly="true"></p>
+        <p><label class="labeltxt">币种汇率：</label>
+            <input name="" type="text" class="inputtxt" style="width:28%;" value="CNY" readonly="true">
+            <!--<input name="textfield72" type="text" class="input60" width="120px"  value="1" readOnly='true'/>-->
+            <label class="labeltxt">金额：</label><input name="" type="text" class="inputtxt" style="width:28%;" value="          20.00" readonly="true"></p>
+        <p><label class="labeltxt">税率：</label><input name="" type="text" class="inputtxt" style="width:28%;" value="            .00" readonly="true">
+            <label class="labeltxt">类型：</label><input name="" type="text" class="inputtxt" style="width:28%;" value="常规订单" readonly="true"></p>
+        <p><label class="labeltxt">供应商：</label><input name="" type="text" class="inputtxt" style="width:78%;" value="20212-无锡市顺丰速运有限公司" readonly="true"></p>
+        <p><label class="labeltxt">付款方式：</label><input name="" type="text" class="inputtxt" style="width:78%;" value="test" readonly="true"></p>
+        <p><label class="labeltxt">购货方：</label><input name="" type="text" class="inputtxt" style="width:78%;" value="博雅干细胞科技有限公司" readonly="true"></p>
+        <p><label class="labeltxt">备注：</label><input name="" type="text" class="inputtxt" style="width:78%;" value="" readonly="true"></p>
+        <p><label class="labeltxt">查看附件：</label>
+
+            <span class="Htxt" style="width:78%;"><a href="../POFILE/20212/PN-39001707003/test.txt" target="_blank">test.txt</a></span>
+
+            <span class="Htxt" style="width:78%;"><a href="../POFILE/20212/PN-39001707003/test - 副本.txt" target="_blank">test - 副本.txt</a></span>
+
+        </p>
+        <p><label class="labeltxt">查看附件：</label>
+
+        </p>
+    </form>
+    <br class="spacer"></div>
+
+<div id="divmain">
+    <h3 class="HHH">采购明细</h3>
+    <table border="0" cellpadding="4" cellspacing="0" class="tabelMain">
+        <tbody><tr>
+            <th>项目编号</th>
+            <th>项目描述</th>
+            <th>数量</th>
+            <th>单价</th>
+        </tr>
+
+        <tr>
+            <td>农夫山泉矿泉水</td>
+            <td>农夫山泉矿泉水550ml</td>
+            <td>           1.00</td>
+            <td>          20.00</td>
+        </tr>
+
+
+        <tr>
+            <td>--</td>
+            <td>--SUM--</td>
+            <td>       1.00</td>
+            <td></td>
+        </tr>
+
+
+        </tbody></table>
+    <br class="spacer"></div>
+
+<div id="divmain">
+    <form action="" method="get">
+
+
+        <p><label class="labeltxt">备注：</label><textarea name="cmemo" rows="3" class="inputtxt" style="width:78%;"></textarea></p>
+
+        <p><label class="labeltxt">上级审批：</label><select name="nextChecker" class="inputtxt" style="width:78%;">
+            select rlmail,Rusername from BSE_ROU where RLID='241' and rdept='IT部' and rluser in (SELECT rluser FROM bse_rou_user where rlid='241') order by rlmail
+            <option value="chunjiao.zhou@boyalife.com">周春姣&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;chunjiao.zhou@boyalife.com</option>
+
+        </select>
+        </p>
+        <p><label class="labeltxt">流程跟踪：</label> <span class="Htxt" style="width:78%;">   1. 当前审批,管理员(IT部),2017/07/14 16:30,发起审批(-)<br></span></p>
+
+        <p><label class="labeltxt">预算审批：</label> <input name="radiobudget" type="radio" value="Y" checked="">批准&nbsp;&nbsp;&nbsp;&nbsp;<input name="radiobudget" type="radio" value="N">拒绝</p>
+        <p><label class="labeltxt">价格审批：</label> <input name="radioprice" type="radio" value="Y" checked="">批准&nbsp;&nbsp;&nbsp;&nbsp;<input name="radioprice" type="radio" value="N">拒绝</p>
+        <p><label class="labeltxt">价格审批：</label> <input name="radioht" type="radio" value="Y" checked="">批准&nbsp;&nbsp;&nbsp;&nbsp;<input name="radioht" type="radio" value="N">拒绝</p>
+
+        <input name="" type="submit" value="提 交" onclick="javascript:fm_submit('');" class="tijiao">
+
+
+    </form>
+
+
+</div>
+<script src="js/mui.min.js"></script>
+<script>
+
+    mui.init({
+        swipeBack:true //启用右滑关闭功能
+    });
+    (function($) {
+        mui('.mui-scroll-wrapper').scroll({
+            deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+        });
+    })(mui);
+
+</script>
+
+
+</body></html>

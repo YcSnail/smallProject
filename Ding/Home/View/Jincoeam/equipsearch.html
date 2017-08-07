@@ -1,0 +1,569 @@
+<include file="Public/headerM" />
+<link href="__PUBLIC__/mui/css/miu.picker.min.css" rel="stylesheet">
+<script src="__PUBLIC__/mui/js/miu.picker.min.js"></script>
+<title>设备</title>
+<style>
+
+    *{
+        color:#000000;
+    }
+
+    p{
+        color: #000000;
+    }
+
+    .mui-btn-primary a{
+        color: #ffffff;
+    }
+
+    .margin-top{
+        margin-top: 2px;
+    }
+
+    .search-cont{
+        text-align: center;
+        margin: 15px;
+    }
+
+    #list-cont-left{
+        margin-top: 10px;
+    }
+
+    a{
+        color: #000000;
+    }
+
+    .mui-table-view>.mui-table-view-cell{
+        color: #000000;
+    }
+
+
+    .top-search{
+        float: none;
+        width: 100%;
+        background-color: #FFFFFF;
+    }
+
+    .mui-radio-p{
+        font-size: 12px;
+        width: 80%;
+    }
+
+    .mui-radio-input{
+        margin-top: 20px;
+    }
+
+    .content-span-second{
+        margin-left: 16px;
+    }
+
+    #starTime{
+        line-height: 36px;
+    }
+
+    #endTime{
+        line-height: 36px;
+    }
+
+    .upload-icon{
+        text-align: right;
+        display: block;
+        margin-right: 20px;
+    }
+
+    .mui-input-row-textarea{
+        height:60px !important;
+    }
+
+    .checkbox-header{
+        float: left;
+        width: 61%;
+    }
+    .checkbox-content{
+        display: inline;
+    }
+
+</style>
+
+<block name="main">
+
+    <div class="mui-content">
+        <div class="mui-content-padded " style="margin: 5px;">
+
+            <div class="mui-input-row" style=" background-color: #FFFFFF;">
+                <label style="width: 35%;">设备名称</label>
+                <label class="top-search" style="width: 60%;">
+                    <a href="#popover" id="openPopover">点击搜索设备</a>
+                </label>
+            </div>
+
+            <!--遮罩层-->
+            <div id="popover" style="height: 120px" class="mui-popover mui-scroll-wrapper">
+
+                <div class="mui-scroll">
+                    <div class="mui-input-row mui-search margin-top">
+                        <input type="search" name="user" class="mui-input-clear" placeholder="输入要搜索的设备">
+                    </div>
+
+                    <div class="search-cont">
+                        <button type="button" class="mui-btn mui-btn-primary search-user">搜索</button>
+                    </div>
+
+                    <div class="search-radio ">
+                        <div class="search-radio-content">
+                            <div class="mui-table-view-cell mui-radio" style="display: none">
+                                <div>
+                                    <p>CP024</p>
+                                    <p class="mui-radio-p">prorable transfer 洁净液体运输</p>
+                                </div>
+                                <input class="mui-radio-input" name="showname" type="radio" value="b">
+                            </div>
+                        </div>
+                        <div class="search-cont">
+                            <button type="button" class="mui-btn mui-btn-primary btn-submit">确定</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--遮罩层 结束-->
+
+            <div class="mui-card-header mui-card-media">
+
+
+                <div class="list-cont">
+                    <div id="list-cont-left" class="change">
+
+                        <form class="mui-input-group">
+                            <div class="mui-input-row">
+                                <label>单号</label>
+                                <input type="text" class="mui-input-clear" id="requestno" value="哈哈" disabled="disabled" >
+                            </div>
+                            <div class="mui-input-row">
+                                <label>日期</label>
+                                <input type="text" class="mui-input-clear"  id="requestdate" value="2017-08-03 17:09:24" disabled="disabled" >
+                            </div>
+                            <div class="mui-input-row">
+                                <label>报修人</label>
+                                <input type="text" class="mui-input-clear" id="requestby" value="蜗牛"  >
+                            </div>
+                            <div class="mui-input-row">
+                                <label>设备区域</label>
+                                <select id="equipmentzone">
+                                </select>
+                            </div>
+                            <div class="mui-input-row">
+                                <label>工作类型</label>
+                                <select id="worktype">
+                                </select>
+                            </div>
+                            <div class="mui-input-row">
+                                <label>优先等级</label>
+                                <select id="priority">
+                                </select>
+                            </div>
+                            <div class="mui-input-row">
+                                <label>联系电话</label>
+                                <input type="text" class="mui-input-clear" id="phone" value="13013001300" >
+                            </div>
+                            <div class="mui-input-row">
+                                <label>设备编号</label>
+                                <input type="text" class="mui-input-clear" id="equipcode" value="CP024"  disabled="disabled">
+                            </div>
+                            <div class="mui-input-row">
+                                <label>设备名称</label>
+                                <input type="text" class="mui-input-clear" id="equipname" value="Portable transfer pump 结晶液"   disabled="disabled">
+                            </div>
+                            <div class="mui-input-row">
+                                <label>设备ID</label>
+                                <input type="text" class="mui-input-clear" id="equipid" disabled="disabled">
+                            </div>
+
+                            <div class="mui-input-row">
+                                <label>希望完成时间</label>
+                                <p id="finishtime" >请选择开始日期</p>
+                            </div>
+
+                            <div class="mui-input-row">
+                                <label>停机时间</label>
+                                <p id="stoptime" >请选择结束日期</p>
+                            </div>
+
+                            <div class="mui-input-row">
+                                <label>报送单位</label>
+                                <select id="requestdept">
+
+                                </select>
+                            </div>
+
+                            <div class="mui-input-row">
+                                <label>照片上传</label>
+                                <p id="scanUpload"  class="upload-icon mui-icon mui-icon-camera"></p>
+                                <input type="hidden" value="" id="photo" />
+                                <img src="" id="picture" style="float:left; width:70%;" />
+                            </div>
+
+                            <div class="mui-input-row">
+                                <label>语音录音</label>
+                                <button type="button" id="recordingValue" class="mui-btn mui-btn-primary" style="display:; width:30%;  margin-left: 10px; background:grey; padding:5px;" onclick="return false;"> <span style="color: #FFFFFF" class="setNum">0</span>s</button>
+                                <button type="button" id="uploadRecording" class="mui-btn mui-btn-primary" style="display:; width:30%;padding:5px;" onclick="return false;">上传录音</button>
+                                <button type="button" id="stopRecording" class="mui-btn mui-btn-primary" style="display:none; width:30%;padding:5px;" onclick="return false;">结束录音</button>
+                            </div>
+
+                            <div class="mui-input-row mui-input-row-textarea">
+                                <label>具体地点</label>
+                                <textarea id="location" rows="5" placeholder="多行文本框"></textarea>
+                            </div>
+                            <div class="mui-input-row mui-input-row-textarea">
+                                <label>故障现象</label>
+                                <textarea id="description" rows="5" placeholder="多行文本框"></textarea>
+                            </div>
+
+                            <div class="mui-input-row mui-input-row-textarea">
+                                <label>劳保用品</label>
+                                <div class="checkbox-header">
+                                    <div class="checkbox-content">
+                                        <span>皮手套</span>
+                                        <input class="spare" value="" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>防护眼镜</span>
+                                        <input class="spare" value="" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>防护面罩</span>
+                                        <input class="spare" value="" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>防酸水靴</span>
+                                        <input class="spare" value="" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>乳胶手套</span>
+                                        <input class="spare" value="" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>长手套</span>
+                                        <input class="spare" value="" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>防尘面具</span>
+                                        <input class="spare" value="" type="checkbox">
+                                    </div>
+                                    <div class="checkbox-content">
+                                        <span>防酸服</span>
+                                        <input class="spare" value="" type="checkbox">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mui-input-row mui-input-row-textarea">
+                                <label>其他注意事项</label>
+                                <textarea id="attention" rows="5" placeholder="多行文本框"></textarea>
+                            </div>
+
+                            <div class="mui-input-row mui-input-row-textarea">
+                                <label>是否需要开具工作许可</label>
+                                <div class="checkbox-header">
+                                    <div class="checkbox-content">
+                                        <span>一般工作许可</span>
+                                        <input class="worklicense" value="normallicense" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>限定空间工作许可</span>
+                                        <input class="worklicense" value="spacelicense" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>挖掘许可</span>
+                                        <input class="worklicense" value="diglicense" type="checkbox">
+                                    </div>
+
+                                    <div class="checkbox-content">
+                                        <span>电气工作许可</span>
+                                        <input class="worklicense" value="equipname" type="checkbox">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mui-input-row mui-input-row-textarea">
+                                <label>经理意见</label>
+                                <textarea rows="5" id="comments" placeholder="多行文本框"></textarea>
+                            </div>
+
+                            <div class="mui-button-row">
+                                <button id="btnRequest" type="button" class="mui-btn mui-btn-primary btn-form-submit" >维修申请</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</block>
+
+<script>
+
+    mui('.mui-scroll-wrapper').scroll({
+        deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+    });
+
+    $('.btn-submit').hide();
+
+    // AJAX 搜索获取 设备信息
+    $('.search-user').click(function () {
+        var user = $("input[name ='user']").val();
+
+        if ( user == null ){
+            mui.alert('请输入用户信息');
+            return false;
+        }
+
+
+        var data = {"code":0,"message":"获取设备信息","Equipment":[{"id":94,"no":"CP024","name":"Portable transfer pump 结晶液体输送泵"},{"id":85,"no":"CP013","name":"No.1 crystalliser cooling water pump 1#结晶冷却水泵"},{"id":86,"no":"CP014","name":"No.2 crystalliser cooling water pump 2#结晶冷却水泵"},{"id":19,"no":"CA001","name":"No.1 crystalliser 1#结晶搅拌器"},{"id":22,"no":"CA002","name":"No.2 crystalliser 2#结晶搅拌器"},{"id":48,"no":"CH010","name":"Crystalliser heater 结晶加热器"},{"id":49,"no":"CH011","name":"No.1 crystalliser cooler 1#结晶冷却器"},{"id":56,"no":"CH016","name":"No.2 crystalliser cooler 2#结晶冷却器"},{"id":797,"no":"1T5020","name":"结晶槽冷却水温度"},{"id":798,"no":"1T5080","name":"至结晶槽富液温度"},{"id":799,"no":"1T5110","name":"NO.1结晶锅温度"},{"id":800,"no":"1T5140","name":"NO.2结晶锅温度"},{"id":801,"no":"1T5170","name":"NO.3结晶锅温度"},{"id":369,"no":"SA005","name":"No.4 crystalliser 4#结晶搅拌器"},{"id":852,"no":"1TCV5110","name":"NO.1结晶槽富液进液"},{"id":828,"no":"1F5090","name":"至结晶槽富液流量"},{"id":842,"no":"1L5100","name":"NO.1结晶槽高液位"},{"id":843,"no":"1L5130","name":"NO.2结晶槽高液位"},{"id":844,"no":"1L5160","name":"NO.3结晶槽高液位"},{"id":205,"no":"SA001","name":"No.1 crystalliser 1#结晶搅拌器"}]};
+        if (data.code ==0) {
+            $('.search-radio-content').empty();
+            var list = data.Equipment;
+            var num = list.length;
+            var text = '';
+            var setHeight = 600;
+
+            for (i = 0; i < num; i++) {
+                text +=
+                    '<div class="mui-table-view-cell mui-radio">' +
+                    '<div class="' + list[i]['no'] + '">' +
+                        '<p>' + list[i]['no'] + '</p>' +
+                        '<p class="mui-radio-p">' + list[i]['name'] + '</p>' +
+                        '<p style="display: none">' + list[i]['id'] + '</p>' +
+                    '</div>' +
+                        '<input class="mui-radio-input" name="equipment" type="radio" value=' + list[i]['no'] + '>' +
+                    '</div>';
+            }
+            $('#popover').height(setHeight);
+
+            $('.search-radio-content').append(text);
+            $('.btn-submit').show();
+
+        }
+
+        // 查询待维修的设备
+        var url = '/jincoEam/index.php/ajax/equipSearch';
+        mui.get(
+            url,
+            {filter:user},
+            function(data){
+
+                if (data.code ==0) {
+                    $('.search-radio-content').empty();
+                    var list = data.Equipment;
+                    var num = list.length;
+                    var text = '';
+                    var setHeight = 600;
+
+                    for (i = 0; i < num; i++) {
+                        text +=
+                            '<div class="mui-table-view-cell mui-radio">' +
+                            '<div class="' + list[i]['no'] + '">' +
+                                '<p>' + list[i]['no'] + '</p>' +
+                                '<p class="mui-radio-p">' + list[i]['name'] + '</p>' +
+                                '<p style="display: none">' + list[i]['id'] + '</p>' +
+                            '</div>' +
+                                '<input class="mui-radio-input" name="equipment" type="radio" value=' + list[i]['no'] + '>' +
+                            '</div>';
+                    }
+
+                    $('#popover').height(setHeight);
+                    $('.search-radio-content').append(text);
+                    $('.btn-submit').show();
+
+                }else
+                if(data.code < 0){
+                    mui.alert(data.message);
+                }else{
+                    mui.alert('请求失败')
+                }
+            },'json'
+        );
+
+    });
+
+    // 表单提交检查
+    $('.btn-submit').click(function () {
+
+        //检查
+        var equipment = $('input:radio[name="equipment"]:checked').val();
+        if( equipment ==null){
+            mui.alert("请选中一个设备!");
+            return false;
+        }
+        mui('#popover').popover('hide');
+
+        var equipmentNo = $('.'+equipment+' > p:eq(0)').text();
+        var equipmentName = $('.'+equipment+' > p:eq(1)').text();
+        var equipmentId = $('.'+equipment+' > p:eq(2)').text();
+
+        if (equipmentNo == null || equipmentName == null || equipmentId == null){
+            mui.alert("请选中一个设备!");
+            return false;
+        }
+
+        // 7 8 9
+        $('.change > .mui-input-group > div:eq(7) > input').val(equipmentNo);
+        $('.change > .mui-input-group > div:eq(8) > input').val(equipmentName);
+        $('.change > .mui-input-group > div:eq(9) > input').val(equipmentId);
+
+        // 选中信息 AJAX 请求获取 详细信息
+        // /jincoEam/index.php/welcome/equipRequest?id={equipid}"
+        setData(equipmentId);
+
+    });
+
+    // 获取设备详细信息
+    function setData(id) {
+        var url = '/jincoEam/index.php/ajax/equipRequest';
+
+        mui.get(
+            url,
+            {id:id},
+            function(data){
+
+                // 修改 设备区域,工作类型,优先等级,报送单位
+                if (data.code == 0){
+
+                    // 设置基本数据
+                    //单号 时间 姓名 0 1 2 requestno //name
+                    $('.change > .mui-input-group > div:eq(0) > select').append(data.requestno);
+                    $('.change > .mui-input-group > div:eq(1) > select').append('20170806');
+                    $('.change > .mui-input-group > div:eq(2) > select').append(data.name);
+
+
+                    //WorkType
+                    var list = data.WorkType;
+                    var num = list.length;
+                    var WorkType ='';
+
+                    for (i=0;i<num;i++){
+                        WorkType += '<option value ='+list[i]['id']+'>'+list[i]['value']+'</option>';
+                    }
+                    $('.change > .mui-input-group > div:eq(3) > select').append(WorkType);
+
+                    // 工作类型
+                    list = null;
+                    num = null;
+
+                    list = data.EquipmentZone;
+                    num = list.length;
+                    var EquipmentZone ='';
+
+                    for (i=0;i<num;i++){
+                        EquipmentZone += '<option value ='+list[i]['id']+'>'+list[i]['value']+'</option>';
+                    }
+                    $('.change > .mui-input-group > div:eq(4) > select').append(EquipmentZone);
+
+                    // 优先等级
+                    list = null;
+                    num = null;
+                    list = data.Priority;
+                    num = list.length;
+                    var Priority ='';
+
+                    for (i=0;i<num;i++){
+                        Priority += '<option value ='+list[i]['id']+'>'+list[i]['value']+'</option>';
+                    }
+                    $('.change > .mui-input-group > div:eq(5) > select').append(Priority);
+
+                    // 保修单位  RequestDept
+                    list = null;
+                    num = null;
+                    list = data.RequestDept;
+                    num = list.length;
+                    var RequestDept ='';
+
+                    for (i=0;i<num;i++){
+                        RequestDept += '<option value ='+list[i]['id']+'>'+list[i]['value']+'</option>';
+                    }
+                    $('.change > .mui-input-group > div:eq(12) > select').append(RequestDept);
+
+
+                }
+                else
+                if(data.code < 0){
+                    mui.alert(data.message);
+                }else{
+                    mui.alert('请求失败')
+                }
+            },'json'
+        );
+    }
+
+
+    $('.btn-form-submit').click(function () {
+        //检查
+        var equipment = $('input:radio[name="equipment"]:checked').val();
+        if( equipment ==null){
+            mui.alert("请选中一个设备!");
+            return false;
+        }
+
+    });
+
+
+    $().ready(function () {
+
+        /**
+         * 日期选择
+         */
+        $("#finishtime").click(function () {
+
+            var dtpicker = new mui.DtPicker({
+                type: "date",//设置日历初始视图模式
+                beginDate: new Date(2017, 06, 01),//设置开始日期
+                endDate: new Date(2099, 12, 31),//设置结束日期
+                labels: ['年', '月', '日']//设置默认标签区域提示语
+            });
+
+            dtpicker.show(function(items) {
+                $("#finishtime").text(items.value);
+            });
+        });
+
+        /**
+         * 日期选择
+         */
+        $("#stoptime").click(function () {
+
+            var dtpicker = new mui.DtPicker({
+                type: "date",//设置日历初始视图模式
+                beginDate: new Date(2017, 06, 01),//设置开始日期
+                endDate: new Date(2099, 12, 31),//设置结束日期
+                labels: ['年', '月', '日'],//设置默认标签区域提示语
+            });
+
+            dtpicker.show(function(items) {
+                $("#stoptime").text(items.value);
+            });
+
+        });
+
+    });
+
+</script>
+
+<include file="Public/footerM" />

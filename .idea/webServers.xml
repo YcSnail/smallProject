@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="61ad749c-3558-49f1-876b-e776bf8e2aed" name="botp" url="http://106.14.115.98">
+        <fileTransfer host="106.14.115.98" port="22" rootFolder="/home/wwwroot/botp.yuanxu.top" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
